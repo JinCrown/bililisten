@@ -28,7 +28,8 @@ class PlayerWorkspaceUiTest {
     private val i=InstrumentationRegistry.getInstrumentation()
     private val app=i.targetContext.applicationContext as ListenApplication
     private val parts=(1..150).map{VideoPart(it.toLong(),it,if(it==17)"示例当前歌曲" else "示例歌曲 $it",204)}
-    private val video=Video("BV1xx411c7mD",1,"150 首经典歌曲合集 · 示例资料",parts,author="示例音乐 UP",owner=8,duration=30600,description="这是视频简介的示例内容。",likes=1234,coins=321,favorites=99,replies=8,copyright=1)
+    private val video=Video("BV1xx411c7mD",1,"150 首经典歌曲合集 · 示例资料",parts,author="示例音乐 UP",owner=8,duration=30600,description="这是视频简介的示例内容。",likes=1234,coins=321,favorites=99,replies=8,copyright=1,
+        cover=InstrumentationRegistry.getArguments().getString("showcaseCover").orEmpty())
     private val entry=QueueEntry("fixture",video.bvid,17,17,video.title+" · 示例当前歌曲")
     private val page=mutableStateOf("player")
     private val state=mutableStateOf(ScreenState(account=Account(7,"示例账号"),accountChecked=true,queue=listOf(entry),currentId=entry.id,positionMs=20000,durationMs=204000,
@@ -81,6 +82,18 @@ class PlayerWorkspaceUiTest {
             },chrome={chrome=it})
         }
     }}}}}
+    @Test fun readmePlayerShowcaseUsesOnlyIsolatedCallbacks(){
+        org.junit.Assume.assumeTrue(InstrumentationRegistry.getArguments().getString("readmeShowcase")=="1")
+        val a=start()
+        try{
+            i.runOnMainSync{state.value=state.value.copy(connected=true,canSeek=true,canPrevious=true,canNext=true)}
+            for((theme,name)in listOf(Theme.LIGHT to "light",Theme.DARK to "dark")){
+                i.runOnMainSync{page.value="player"};fixture(a,theme);waitFor("播放封面");Thread.sleep(400);photo("readme-player-$name")
+                click("切换到字幕");waitFor("滚动字幕");photo("readme-subtitles-$name")
+            }
+            assertEquals(0,actions)
+        }finally{i.runOnMainSync{a.finish()}}
+    }
     @Test fun bufferingHintNeverMovesPlayerContentAcrossThemesAndLargeFont(){val a=start();try{
         val evidence=JSONArray()
         for((theme,font,name)in listOf(Triple(Theme.LIGHT,1f,"light"),Triple(Theme.DARK,1f,"dark"),

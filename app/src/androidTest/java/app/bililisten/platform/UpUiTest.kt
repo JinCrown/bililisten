@@ -419,6 +419,36 @@ class UpUiTest {
             i.waitForIdleSync();Thread.sleep(150)
         }
     }
+    /** README captures use local, explicitly seeded artwork and isolated account/playback ports. */
+    @Test fun readmeShowcaseFromLocalFixtures()=runBlocking {
+        val args=InstrumentationRegistry.getArguments()
+        org.junit.Assume.assumeTrue(args.getString("readmeShowcase")=="1")
+        val covers=args.getString("showcaseCovers").orEmpty().split(',').filter{it.isNotBlank()}
+        require(covers.size==3 && covers.all{CoverStore.safeUrl(it)!=null})
+        val samples=covers.mapIndexed{index,cover->Recommendation("BV"+(300+index).toString().padStart(10,'0'),"示例内容",null,cover,"示例创作者",241,8,cover)}
+        val localSources=object:SourceRepository {
+            override suspend fun publicFolders(owner:Long,page:Int)=SourceListPage(emptyList(),page,false)
+            override suspend fun followed(account:Long,page:Int)=SourceListPage(emptyList(),page,false)
+            override suspend fun resolve(link:SourceLink,account:Long?)=error("unused")
+            override suspend fun content(source:SourceRef,account:Long?,page:Int)=error("unused")
+        }
+        for(cover in covers)assertNotNull("Seed artwork before running this capture",app.covers.load(cover))
+        val a=start()
+        try {
+            for((theme,id)in listOf(Theme.LIGHT to "light",Theme.DARK to "dark")) {
+                val f=show(a,theme,1f,library=localSources,homeSamples=samples)
+                try {
+                    i.runOnMainSync{f.vm.loadRecommendations()}
+                    waitFor("收听推荐：把生活里的小美好，听进耳朵 · 示例 1");Thread.sleep(600);shot("readme-home-$id")
+                    revealHome("查看推荐 UP：${f.profile.name}");Thread.sleep(400);shot("readme-recommendations-$id")
+                    click("收藏");waitFor("我的收藏夹");shot("readme-favorites-$id")
+                    click("我的");waitFor("我的收听");shot("readme-mine-$id")
+                    click("设置");waitFor("音乐推荐");shot("readme-settings-$id")
+                    assertEquals(0,f.audioCalls);assertEquals(0,f.remoteWrites)
+                }finally{i.runOnMainSync{f.owner.clear()}}
+            }
+        }finally{i.runOnMainSync{a.finish()}}
+    }
     @Test fun refinedHomeShowsCreatorsAndOpensUploadsAcrossThemesAndLargeFont()=runBlocking {
         val a=start()
         val samples=withContext(Dispatchers.IO){app.recommendations.candidates(HomeCategory.MUSIC)}

@@ -1,104 +1,170 @@
-# 哔哩听视频
+<div align="center">
 
-**让听视频更方便。**
+<img src="docs/public/images/app-icon.png" alt="哔哩听视频图标" width="112" height="112">
 
-B站毕竟是一个视频网站，只想听的时候，常常还要点击很多东西。
-哔哩听视频为收听而做，希望你打开软件，就能更快听到自己想听的内容：
-音乐、播客、有声书、课程，或者一段想放在耳边的视频。
+<h1>哔哩听视频</h1>
 
-作者：**金色王冠（Golden Crown）**
+<p><strong>让听视频更方便。</strong></p>
 
-项目名：`bililisten`
+<p>金色王冠（Golden Crown） · QQ 交流群：<strong>1126192808</strong></p>
 
-定位：**个人兴趣项目，免费分享，不承诺持续更新。**
+<p>
+  <a href="https://github.com/JinCrown/bililisten/releases"><img src="https://img.shields.io/github/v/release/JinCrown/bililisten?include_prereleases&amp;style=flat-square&amp;color=ea4c89" alt="当前内测版本"></a>
+  <img src="https://img.shields.io/badge/Android-8.0%2B-3DDC84?style=flat-square&amp;logo=android&amp;logoColor=white" alt="Android 8.0 及以上">
+  <img src="https://img.shields.io/badge/Kotlin-Jetpack%20Compose-7F52FF?style=flat-square" alt="Kotlin 与 Jetpack Compose">
+</p>
+
+<p>
+  <a href="https://github.com/JinCrown/bililisten/releases">下载 APK</a> ·
+  <a href="https://github.com/JinCrown/bililisten/issues">反馈问题</a> ·
+  <a href="CONTRIBUTING.md">参与开发</a>
+</p>
+
+</div>
+
+---
+
+## 为什么做它
+
+B站毕竟是一个视频网站。只想听音乐、播客、课程或者有声书的时候，
+还要打开视频、找合集、切分 P，点来点去。
+
+**哔哩听视频就是为了让“听”这件事更方便而做的。**
+把推荐、收藏、UP 投稿和播放队列放在一起，打开软件，找到喜欢的内容，
+接下来就交给耳朵。
+
+## 看看界面
+
+首页找内容，播放器管收听，字幕页跟上正在听的那一句。
+
+<table>
+  <tr>
+    <th align="center">首页推荐</th>
+    <th align="center">专注收听</th>
+    <th align="center">同步字幕</th>
+  </tr>
+  <tr>
+    <td align="center"><img src="docs/public/images/home-light.png" alt="首页排行榜与音乐视频推荐" width="230"></td>
+    <td align="center"><img src="docs/public/images/player-light.png" alt="播放器封面、分 P 标题和播放控制" width="230"></td>
+    <td align="center"><img src="docs/public/images/subtitles-light.png" alt="滚动字幕与时间轴" width="230"></td>
+  </tr>
+</table>
+
+把喜欢的内容收好，也能继续发现下一段想听的声音。
+
+<table>
+  <tr>
+    <th align="center">发现音乐 UP</th>
+    <th align="center">我的收藏</th>
+    <th align="center">我的收听</th>
+  </tr>
+  <tr>
+    <td align="center"><img src="docs/public/images/recommendations-light.png" alt="音乐 UP 推荐与最近收听" width="230"></td>
+    <td align="center"><img src="docs/public/images/favorites-light.png" alt="收藏夹、关注内容与 UP 收藏入口" width="230"></td>
+    <td align="center"><img src="docs/public/images/mine-light.png" alt="我的收听和本地管理入口" width="230"></td>
+  </tr>
+</table>
+
+<details>
+<summary>也有深色模式，点这里看看</summary>
+
+<p>
+  <img src="docs/public/images/home-dark.png" alt="深色首页" width="230">
+  <img src="docs/public/images/player-dark.png" alt="深色播放器" width="230">
+  <img src="docs/public/images/settings-dark.png" alt="深色设置" width="230">
+</p>
+
+</details>
+
+<sub>截图来自当前界面的示例数据预览；封面仅作界面展示，示例播放量与账号不是实际平台数据。</sub>
+
+## 听起来，有这些方便
+
+### 播放，为收听而做
+
+- **后台与锁屏播放**：切到其他应用、熄屏，继续听；支持系统媒体控制和蓝牙耳机控制。
+- **分 P 与合集队列**：看清当前是哪一 P，连续收听长合集；队列支持顺序、随机和单曲循环。
+- **倍速与定时**：按自己的节奏听课程、播客，睡前也能设置停止时间。
+- **音质与缓存**：自动选择最高可用音质，边播放边缓存；下载和缓存各有管理入口。
+
+### 首页，不只有一张排行榜
+
+- **分类排行榜**：音乐、学习、情感、有声书、游戏、生活，还有直播分类。
+- **音乐视频推荐**：默认随机推荐 **200 万播放以上**的音乐视频，不固定只看播放量最高的几个。
+- **滑动继续发现**：每批 12 个，向左浏览时继续加载下一批；单视频、多分 P、合集的类型直接标出来。
+- **推荐 UP**：音乐热榜创作者也随机展示，找到喜欢的作者，就能进入投稿列表。
+- **推荐方向自己选**：关闭设置里的“音乐推荐”，视频和 UP 一起切换到账号首页推荐来源。
+
+### 喜欢的内容，收在一起
+
+- **快速收藏，也能取消**：点一次收藏，再点一次取消；还可以选择其他收藏夹。
+- **收藏夹、关注内容、UP 收藏**：常听的内容集中放好，不必每次重新搜索。
+- **UP 投稿直接听**：搜索作者、查看投稿，把喜欢的作者加入 UP 收藏，也能把投稿放进队列。
+- **最近收听与续听**：本地保存收听记录，方便回到之前的内容和进度。
+
+### 字幕和歌词，跟着声音走
+
+支持视频字幕、滚动字幕和逐行显示，也能调整同步偏移。
+音乐内容可以查询歌词候选，选择对应歌曲版本；带逐字时间信息的歌词
+可以逐字高亮，普通时间轴则按行同步。
+
+### 桌面上，也能听
+
+播放条、唱片、封面，三种小组件各有自己的样子。
+唱片和封面支持 **2×2** 布局，播放条适合横向摆放；不用进入应用，
+也能从桌面控制当前收听。
+
+<table>
+  <tr>
+    <th align="center">唱片 · 2×2</th>
+    <th align="center">封面 · 2×2</th>
+    <th align="center">播放条</th>
+  </tr>
+  <tr>
+    <td align="center"><img src="docs/public/images/widget-vinyl.png" alt="唱片桌面小组件" width="170"></td>
+    <td align="center"><img src="docs/public/images/widget-cover.png" alt="封面桌面小组件" width="170"></td>
+    <td align="center"><img src="docs/public/images/widget-strip.png" alt="横向播放条小组件" width="280"></td>
+  </tr>
+</table>
+
+### 还有这些日常细节
+
+| 内容 | 现在可以做什么 |
+| --- | --- |
+| 搜索 | 视频、UP 主、搜索联想与热搜 |
+| 直播 | 查看直播排行，进入直播间收听 |
+| 消息 | 在应用里查看账号私信和通知 |
+| 外观 | 浅色、深色、跟随系统 |
+| 本地数据 | 收听历史、下载、缓存、数据导出与导入 |
+| 换手机 | 局域网数据转移，带走自己的本地数据 |
+| 历史同步 | 本地历史正常保存，实时同步 B站最近记录默认关闭，可自行开启 |
+
+<details>
+<summary>看看设置页</summary>
+
+<p>
+  <img src="docs/public/images/settings-light.png" alt="浅色设置页" width="230">
+  <img src="docs/public/images/settings-dark.png" alt="深色设置页" width="230">
+</p>
+
+</details>
 
 ## 下载与交流
 
-Android **8.0 及以上**，当前版本 **0.10.13-beta.1**，仍处于内测阶段。
-安装包通过本仓库的 [Releases](https://github.com/JinCrown/bililisten/releases) 页面提供；请从本仓库下载，不要购买付费包
-或来历不明的修改版。不同手机的通知样式、后台运行和桌面小组件可能有所差异。
+**Android 8.0 及以上**，当前提供内测安装包：[前往 Releases 下载](https://github.com/JinCrown/bililisten/releases)。
 
-QQ 群：**1126192808**。欢迎交流使用体验、反馈 Bug 和提出好建议。
-也欢迎通过 [Issues](https://github.com/JinCrown/bililisten/issues) 和 Pull Requests 参与，详见 [参与说明](CONTRIBUTING.md)。
+**QQ 交流群：1126192808**。聊使用体验、报 Bug、提好建议，都欢迎。
+有问题可以一起找原因，有好的想法也可以一起把软件做得更好。
+欢迎提 [Issue](https://github.com/JinCrown/bililisten/issues)、改文档或提交代码，
+具体见 [参与说明](CONTRIBUTING.md)。
 
-## 可以做什么
+## 项目说明
 
-- 视频音频播放、分 P / 合集队列、倍速、后台及锁屏播放。
-- 搜索视频与 UP 主，查看排行榜、收藏和最近收听记录。
-- 音乐推荐默认开启：随机推荐 200 万播放以上的音乐视频，滑动时分批加载，
-  同时推荐音乐热榜创作者。关闭后使用账号的首页推荐来源，并推荐其中的创作者。
-- 收藏与取消收藏、音频缓存和下载、桌面播放条 / 唱片 / 封面小组件。
-- 查看账号私信和通知、查看字幕及同步显示；精度受原字幕时间信息限制，
-  不承诺每个视频都有逐字歌词。
-- 浅色 / 深色外观、本地历史、数据导出导入和局域网数据转移。
+金色王冠（Golden Crown）的个人兴趣项目，免费分享，不承诺持续更新。
+原创源码允许免费使用、修改和分享，**禁止商用、收费和牟利**。
+本项目不是 B站官方客户端，未获官方授权；平台接口与部分功能的可用性可能变化。
 
-部分功能需要登录。功能是否可用还取决于账号权限、内容本身和平台接口。
+[完整许可](LICENSE) · [隐私与本地数据](docs/public/PRIVACY.md) ·
+[第三方组件与资源](THIRD_PARTY_NOTICES) · [自己构建](docs/public/BUILDING.md)
 
-## 界面预览
-
-以下是示例数据下的设置页，不包含真实账号信息。
-
-<p>
-  <img src="docs/public/images/settings-light.png" alt="浅色设置页" width="240">
-  <img src="docs/public/images/settings-dark.png" alt="深色设置页" width="240">
-</p>
-
-## 数据与平台
-
-本项目**不是哔哩哔哩官方客户端，也未获得哔哩哔哩官方授权**，不提供、
-不售卖视频、音乐或其他内容的版权。平台接口可能变动或限制访问，因此
-不能保证所有功能一直可用，也不提供绕过登录、付费权限或平台验证的功能。
-
-本地收听历史正常保存；**实时同步 B站最近记录默认关闭**，需要自己开启。
-登录、播放和账号操作仍会与平台服务通信。详见 [隐私与本地数据](docs/public/PRIVACY.md)。
-
-## 非商业源码许可
-
-允许免费使用、学习、修改和分享，**禁止商用、收费和牟利**，包括售卖安装包、
-付费会员、广告、推广返佣等。修改版也要保留许可及来源说明。
-完整条款以 [LICENSE](LICENSE) 为准。
-
-这是**非商业源码公开项目（source-available）**，不是 OSI 定义的自由开源项目。
-上述限制只适用于本项目有权许可的原创部分，不能覆盖第三方组件的原许可。
-SoundTouch 等第三方组件及资源说明见 [THIRD_PARTY_NOTICES](THIRD_PARTY_NOTICES)。
-公开源码不代表平台、商标或内容权利人给予了使用授权。
-
-## 自己构建
-
-原生 Android：Kotlin、Jetpack Compose、Media3、Room；网络与业务代码在
-`shared` 模块。当前只提供 Android 版本，没有已经实现的 iOS 或鸿蒙客户端。
-
-需要 JDK **17+**、Android SDK **36.1**、Build Tools **36.1.0** 和
-NDK **28.2.13676358**。使用仓库自带的 Gradle Wrapper，不需要作者的签名私钥。
-
-在 Android Studio 打开项目并配置 SDK；或设置 `ANDROID_HOME` 指向 SDK 目录。
-Windows PowerShell 示例：
-
-```powershell
-.\scripts\build.ps1 -JdkHome '<你的 JDK 目录>' -Mode Debug
-.\scripts\build.ps1 -JdkHome '<你的 JDK 目录>' -Mode Check
-.\scripts\audit-public.ps1
-```
-
-`Check` 包含接口目录检查、架构检查、主机单元测试、Lint 和 Debug APK 构建，
-不会自动连接手机或使用真实账号执行平台操作。
-
-Linux / macOS 也可使用 Gradle：
-
-```bash
-bash gradlew checkArchitecture :shared:testDebugUnitTest :app:testDebugUnitTest :app:lintDebug :app:assembleDebug
-```
-
-Debug APK 位于 `app/build/outputs/apk/debug/app-debug.apk`。
-公开安装包使用作者独立的签名；自行构建的包可能无法覆盖它，换签名前请先
-导出希望保留的本地数据。不要为了覆盖安装而共享任何签名私钥。
-
-`third_party/soundtouch` 包含 LGPL 组件完整源码，构建说明见
-[SoundTouch 来源与替换方式](third_party/soundtouch/UPSTREAM.md)。
-内部 UI 草图、实测日志、设备截图和签名文件不随源码发布。
-
-## 已知边界
-
-平台风险验证、无音频轨的内容、失效或权限不足的内容可能无法播放。
-歌词效果取决于字幕来源；通知栏封面展示由 Android 和手机系统共同决定。
-内测已做部分设备验证，仍欢迎更多机型的反馈，不代表所有机型都已验证。
+感谢每一个使用、反馈和参与的人。
