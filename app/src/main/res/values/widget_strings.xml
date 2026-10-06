@@ -1,0 +1,5 @@
+<resources>
+    <string name="playback_widget_description">播放条 · 4×1 / 4×2</string>
+    <string name="playback_widget_vinyl_description">唱片 · 2×2</string>
+    <string name="playback_widget_cover_description">封面 · 2×2</string>
+</resources>

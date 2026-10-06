@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-05",
+  "scope": "BiliApi, BiliMessages, SearchAssist; remote writes reviewed but not executed",
+  "groups": [
+    {"host":"app.bilibili.com","method":"GET","status":"mobile-home-cookie-read","paths":["/x/v2/feed/index"]},
+    {"host":"api.bilibili.com","method":"GET","status":"retained","paths":["/x/web-interface/nav","/x/web-interface/nav/stat","/x/v2/history/shadow","/x/web-interface/history/cursor"]},
+    {"host":"api.bilibili.com","method":"GET","status":"migrated-wbi","signature":"WBI","paths":["/x/web-interface/wbi/view/detail","/x/player/wbi/playurl","/x/player/wbi/v2"]},
+    {"host":"api.bilibili.com","method":"GET","status":"already-wbi","signature":"WBI","paths":["/x/web-interface/wbi/search/type","/x/space/wbi/acc/info","/x/space/wbi/arc/search","/x/web-interface/ranking/v2"]},
+    {"host":"api.bilibili.com","method":"GET","status":"retained","paths":["/x/tag/archive/tags","/x/web-interface/archive/relation","/x/v3/fav/folder/created/list-all","/x/v3/fav/folder/created/list","/x/v3/fav/resource/list","/x/v3/fav/folder/collected/list","/x/polymer/web-space/seasons_archives_list","/x/series/series","/x/series/archives","/x/v3/fav/folder/info"]},
+    {"host":"api.bilibili.com","method":"GET","status":"diagnostic-only","paths":["/x/web-interface/popular"]},
+    {"host":"api.bilibili.com","method":"POST","status":"retained-no-real-write-test","signature":"CSRF","paths":["/x/v2/history/report","/x/v2/history/delete","/x/v2/history/clear","/x/web-interface/archive/like","/x/web-interface/coin/add","/x/web-interface/archive/like/triple","/x/v3/fav/season/fav","/x/v3/fav/season/unfav","/x/v3/fav/folder/add","/x/v3/fav/folder/edit","/x/v3/fav/folder/del","/x/v3/fav/resource/deal"]},
+    {"host":"api.bilibili.com","method":"GET","status":"current-message-source","paths":["/x/msgfeed/unread","/x/msgfeed/reply","/x/msgfeed/at","/x/msgfeed/like","/x/polymer/pc-electron/v1/user/cards"]},
+    {"host":"api.vc.bilibili.com","method":"GET","status":"migrated-wbi","signature":"WBI","paths":["/session_svr/v1/session_svr/get_sessions","/svr_sync/v1/svr_sync/fetch_session_msgs"]},
+    {"host":"message.bilibili.com","method":"GET","status":"current-message-source","paths":["/x/sys-msg/query_unified_notify","/x/sys-msg/query_user_notify","/x/sys-msg/query_notify_list"]},
+    {"host":"api.live.bilibili.com","method":"GET","status":"migrated-consolidated","paths":["/xlive/web-room/v1/index/getInfoByRoom"]},
+    {"host":"api.live.bilibili.com","method":"GET","status":"current-live-source","paths":["/xlive/web-interface/v1/index/getHotRankList","/xlive/web-room/v2/index/getRoomPlayInfo"]},
+    {"host":"api.live.bilibili.com","method":"POST","status":"current-live-source-no-real-write-test","signature":"CSRF","paths":["/xlive/web-room/v1/index/roomEntryAction"]},
+    {"host":"api.bilibili.com","method":"GET","status":"migrated-public-search-assist","paths":["/x/web-interface/suggest","/x/web-interface/wbi/search/square"]}
+  ],
+  "dynamicSourcePatterns": {
+    "/x/v3/fav/season/$path":["/x/v3/fav/season/fav","/x/v3/fav/season/unfav"],
+    "/x/v3/fav/folder/$path":["/x/v3/fav/folder/add","/x/v3/fav/folder/edit","/x/v3/fav/folder/del"],
+    "/x/msgfeed/$name":["/x/msgfeed/reply","/x/msgfeed/at","/x/msgfeed/like"],
+    "/x/sys-msg/$name":["/x/sys-msg/query_unified_notify","/x/sys-msg/query_user_notify"]
+  },
+  "retiredPaths":["/x/player/playurl","/x/web-interface/view","/room/v1/Room/room_init","/room/v1/Room/get_info","/live_user/v1/Master/info","/main/suggest","/main/hotword"],
+  "excluded": [
+    {"surface":"official web login / browser jumps","hosts":["passport.bilibili.com","www.bilibili.com","live.bilibili.com","space.bilibili.com"],"reason":"Browser navigation, not API replacement; no password capture"},
+    {"surface":"short links","hosts":["b23.tv"],"reason":"Anonymous bounded HTTPS resolution, not an API version"},
+    {"surface":"audio, covers, subtitles","hosts":["bilivideo.com","bilivideo.cn","hdslb.com","akamaized.net"],"reason":"Server-returned HTTPS assets; isolated from account Cookie"},
+    {"surface":"lyrics","hosts":["lrclib.net"],"reason":"Independent third-party service; not a Bilibili API"}
+  ],
+  "limitations": [
+    "retained does not mean every route has been independently confirmed in the latest official bundle",
+    "An official bundle match proves current use, not a public supported API contract",
+    "Private reads need a logged-in device check; fixtures alone are not real-platform acceptance",
+    "POST routes are tested with fixtures only; no remote account changes during this audit",
+    "HTTP 412 / code -352 can still occur on current routes; never retry with retired paths",
+    "Migrating playurl does not prove the previously observed CDN EOF is fixed"
+  ]
+}

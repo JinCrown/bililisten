@@ -1,0 +1,6 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <application>
+        <!-- Runs as the helper APK's UID, independent of the instrumented player's UID. -->
+        <activity android:name="app.bililisten.playback.FocusRequestActivity" android:exported="true" />
+    </application>
+</manifest>

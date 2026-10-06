@@ -1,0 +1,4 @@
+<resources><style name="Theme.BiliListen.Startup" parent="android:style/Theme.Material.Light.NoActionBar"><item name="android:windowBackground">@drawable/startup_background</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:statusBarColor">#FFF8FB</item>
+        <item name="android:navigationBarColor">#FFF8FB</item><item name="android:windowSplashScreenBackground">#FFF8FB</item><item name="android:windowSplashScreenAnimatedIcon">@mipmap/ic_launcher_user</item></style></resources>

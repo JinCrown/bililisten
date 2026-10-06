@@ -1,0 +1,9 @@
+* text=auto eol=lf
+gradlew text eol=lf
+*.sh text eol=lf
+*.bat text eol=crlf
+*.png binary
+*.webp binary
+*.jar binary
+third_party/soundtouch/** -text
+third_party/soundtouch/UPSTREAM.md text eol=lf

@@ -1,0 +1,36 @@
+name: Bug 反馈
+description: 反馈可以复现的软件问题
+title: "[Bug] "
+body:
+  - type: markdown
+    attributes:
+      value: "也可在 QQ 群 1126192808 反馈。不要上传 Cookie、验证码、登录二维码、账号导出文件或未脱敏的私信截图。"
+  - type: input
+    id: version
+    attributes:
+      label: 软件版本
+      placeholder: "例如 0.10.13-beta.1"
+    validations:
+      required: true
+  - type: input
+    id: device
+    attributes:
+      label: 手机型号与 Android 版本
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 复现步骤
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: 预期结果与实际结果
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 补充信息或脱敏截图

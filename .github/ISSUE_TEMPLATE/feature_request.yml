@@ -1,0 +1,19 @@
+name: 功能建议
+description: 提出改善收听体验的建议
+title: "[建议] "
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: 你遇到了什么不方便
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: 希望怎么改进
+    validations:
+      required: true
+  - type: markdown
+    attributes:
+      value: "这是个人兴趣项目，欢迎讨论，但不保证每条建议都会实现。"

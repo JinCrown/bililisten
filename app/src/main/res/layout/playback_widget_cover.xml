@@ -1,0 +1,20 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_root" android:layout_width="match_parent" android:layout_height="match_parent"
+    android:clipToOutline="true" android:background="@drawable/widget_cover_background">
+    <ImageView android:id="@+id/widget_cover" android:layout_width="match_parent" android:layout_height="match_parent"
+        android:src="@drawable/widget_cover_placeholder" android:scaleType="centerCrop" android:contentDescription="@null" />
+    <ImageView android:layout_width="match_parent" android:layout_height="match_parent" android:background="@drawable/widget_cover_scrim" android:contentDescription="@null" />
+    <LinearLayout android:id="@+id/widget_cover_overlay" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:padding="12dp">
+        <LinearLayout android:id="@+id/widget_header" android:layout_width="match_parent" android:layout_height="0dp"
+            android:layout_weight="1" android:orientation="vertical" android:gravity="bottom" android:paddingBottom="8dp">
+            <TextView android:id="@+id/widget_title" android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:text="哔哩听视频" android:textSize="14sp" android:textStyle="bold" android:textColor="#FFFFFF"
+    android:maxLines="2" android:ellipsize="end" android:includeFontPadding="false" />
+<TextView android:id="@+id/widget_status" android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:layout_marginTop="4dp" android:text="尚未播放" android:textSize="10sp" android:textColor="#E8E8EC"
+    android:maxLines="1" android:ellipsize="end" android:includeFontPadding="false" />
+        </LinearLayout>
+        <include layout="@layout/widget_progress" />
+        <include layout="@layout/widget_transport" />
+    </LinearLayout>
+</FrameLayout>
