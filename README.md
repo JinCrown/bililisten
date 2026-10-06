@@ -164,6 +164,9 @@
 
 **Android 8.0 及以上**，当前提供内测安装包：[前往 Releases 下载](https://github.com/JinCrown/bililisten/releases)。
 
+普通用户只需下载 `.apk` 安装包；许可、校验信息与组件源码归档在
+[版本材料](docs/public/releases/v0.10.13-beta.1/README.md)，不需要一起下载。
+
 **QQ 交流群：1126192808**。聊使用体验、报 Bug、提好建议，都欢迎。
 有问题可以一起找原因，有好的想法也可以一起把软件做得更好。
 欢迎提 [Issue](https://github.com/JinCrown/bililisten/issues)、改文档或提交代码，

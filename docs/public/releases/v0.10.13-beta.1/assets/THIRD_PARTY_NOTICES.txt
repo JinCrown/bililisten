@@ -1,0 +1,49 @@
+哔哩听视频 · 第三方组件与资源声明
+更新日期：2026-10-06
+
+本文件登记已引入组件，不代表完成正式发布所需的许可、NOTICE 和传递依赖核查。
+本项目原创部分采用根目录 LICENSE 中的非商业源码许可，不是 MIT / GPL
+或 OSI 开源许可。该许可不覆盖以下第三方组件，也不限制其原许可证授予
+的权利。本文件是来源登记，不保证已经完成所有传递依赖及素材的法律审查。
+
+资源说明：
+- app/src/main/res/mipmap-nodpi/ic_launcher_user.png 为用户提供的应用图标。
+  其素材来源及原始权利尚未独立核实，不能因此标为本项目原创授权。
+- app/src/main/res/drawable-nodpi/tv_listener.webp 为根据用户提供的角色参考
+  生成的听众插画；生成不意味着已获得参考角色或第三方标识的授权。
+- 官网小电视的路径来源见下文，权利归原权利人。项目未取得 B站官方授权。
+- 视频封面、头像、字幕和音频等运行时内容由平台提供，权利归原权利人，
+  不属于本项目的原创许可；源码公开不授予这些内容的使用权。
+- 内部设计参考图、视频封面资料与真实设备验证记录不随仓库发布。
+
+2026-10-01 倍速修复：增加 SoundTouch 2.4.1（Olli Parviainen，LGPL 2.1 或更新版本）。
+独立 libsoundtouch.so 动态链接，不修改上游算法。完整许可证、源码与构建说明见
+third_party/soundtouch/COPYING.TXT、UPSTREAM.md，且许可证随 APK 打包并在“关于”展示。
+内测 APK 附对应完整源码包；JNI 适配层、四架构构建文件也包含其中。
+新增 libc++_shared.so 来自 Android NDK 28.2.13676358；随包提供 LLVM NOTICE
+（Apache 2.0 与 LLVM exceptions 及其中第三方声明），在“关于”可查看。
+
+运行时直接依赖（准确坐标见 app/build.gradle.kts、shared/build.gradle.kts）：
+- Kotlin standard library 2.2.21 — https://github.com/JetBrains/kotlin
+- kotlinx.serialization 1.9.0 — https://github.com/Kotlin/kotlinx.serialization
+- kotlinx.coroutines 1.10.2 — https://github.com/Kotlin/kotlinx.coroutines
+- Ktor 3.3.3 / OkHttp engine — https://github.com/ktorio/ktor
+- OkHttp（传递依赖）— https://github.com/square/okhttp
+- Jetpack Compose BOM 2025.10.01、Activity 1.11.0、Lifecycle 2.9.4、Room 2.8.3
+  — https://android.googlesource.com/platform/frameworks/support/
+- AndroidX Media3 1.8.0 — https://github.com/androidx/media
+- SnakeYAML 2.5（Apache 2.0，安全解析 Lyricsfile；禁用重复键、别名与自定义 Java 类型）— https://github.com/snakeyaml/snakeyaml
+- Compose Material Icons Core（Apache 2.0，与 Compose BOM 对齐；历史版本 Person 图标来源）— https://android.googlesource.com/platform/frameworks/support/
+- B站网站小电视图形：应用内小电视图标统一使用官网 header-v2 中 `bili-icon_dingdao_zhuzhan` 的原始路径，转为 Android VectorDrawable，只调整尺寸和主题颜色。来源 https://s1.hdslb.com/bfs/seed/jinkela/header-v2/header.js ，由 https://app.bilibili.com/ 引用。图形／商标权利归原权利人，不标注为本项目原创或 Apache 授权；本应用不是 B站官方客户端。
+
+构建和测试组件：
+- Gradle Wrapper 8.13 — https://github.com/gradle/gradle/tree/v8.13.0
+- Android Gradle Plugin 8.13.2
+- Kotlin/Compose/serialization Gradle plugins 2.2.21
+- KSP 2.2.21-2.0.4 — https://github.com/google/ksp
+- JUnit 4.13.2 — https://github.com/junit-team/junit4
+- Ktor MockEngine、kotlin-test、Coroutines Test（版本与运行库对齐）
+
+发布前待办：导出实际解析后的完整依赖图；按具体版本收集 LICENSE／NOTICE，
+检查 APK 内传递组件、原生库和资源的声明；在正式应用提供适当的第三方声明入口。
+该工作对应计划清单 DOC-14，目前仅建立登记，不勾选正式发布许可检查。

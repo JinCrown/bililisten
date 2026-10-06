@@ -7,3 +7,4 @@ gradlew text eol=lf
 *.jar binary
 third_party/soundtouch/** -text
 third_party/soundtouch/UPSTREAM.md text eol=lf
+docs/public/releases/*/assets/* -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

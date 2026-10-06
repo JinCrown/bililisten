@@ -1,0 +1,4 @@
+734b773fd05892f8a3f88bd8236def881ef2b6778ebbb7a3fdd0f3d3ac899f7a  bililisten-0.10.13-beta.1-soundtouch-source.zip
+3e75447b4dd4242448a17b206921f4ee95088f7a933dbd1be2ccf265d8685bd0  bililisten-0.10.13-beta.1.apk
+3d83fdbe744cd78d93aecc17ee81644aeaf456dfd102aa6df32c304aee082601  LICENSE.txt
+4280710448c6e8b056f30ba9f250aea4f10aaba5de629b4ddc16373656896dba  THIRD_PARTY_NOTICES.txt
